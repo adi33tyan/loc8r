@@ -1,14 +1,21 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
-const ctrlLocations=require('../controllers/locations');
-const ctrlOthers=require('../controllers/others');
-/* GET home page. */
-router.get('/', ctrlLocations.homeList);
-router.get('/location', ctrlLocations.locationInfo);
-router.get('/location1', ctrlLocations.locationInfo1);
-router.get('/location2', ctrlLocations.locationInfo2);
-router.get('/location/review/new', ctrlLocations.addReview);
-router.get('/about',ctrlOthers.about);
-router.get('/signin',ctrlOthers.signin);
-router.get('/register',ctrlOthers.register);
+var ctrllocation = require('../controllers/locations');
+var ctrlothers = require('../controllers/others');
+
+/* GET Locations page */
+router.get('/', ctrllocation.homelist);
+router.get('/location', ctrllocation.locationInfo);
+router.get('/location/review/new', ctrllocation.addReview);
+
+/*GET others page */
+router.get('/about', ctrlothers.about);
+
+router.get('/signin', ctrlothers.signin);
+
+router.get('/register', ctrlothers.register);
+
 module.exports = router;
+
+ 
